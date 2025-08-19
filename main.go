@@ -3,10 +3,12 @@ package main
 // TODO : Faire un clear du terminal avant de lancer l'app en fonction de l'OS
 // TODO : Vérifier Port soit correct lors de l'input de l'user
 // TODO : Utiliser goroutines
-// TODO : Séparer les fichiers
-// TODO : Faire une interface web (VueJS, shadcn, Gin)
+// TODO : Séparer les fichiers, faire de l'POO
+// TODO : Faire une interface web (VueJS, Shadcn, Gin)
 // TODO : Scan de ports connus (port 80, 443, 22, etc.)
 // TODO : Faire des TESTS
+// TODO : Connaitre adresse ip via un nom de domaine
+// TODO : Vitesse de scan
 
 import (
 	"LightScan/scan"
@@ -16,6 +18,15 @@ import (
 	"strconv"
 	"time"
 )
+
+func main() {
+	fmt.Println("")
+	fmt.Println("\033[31m // LightScan // \033[0m")
+	fmt.Println("\033[31m // Scan any TCP port(s) is open !// \033[0m")
+	fmt.Println("")
+
+	scanPort()
+}
 
 func scanPort() {
 	var ip string
@@ -94,17 +105,8 @@ func scanEachPort(ip string, port int) bool {
 func verifyPort(port int) bool {
 	// Verify port in range uint16
 	if port < 0 || port > 65535 {
-		fmt.Println("Must be in range [0:65535] !")
+		fmt.Println("Must be in [0:65535] range !")
 		return false
 	}
 	return true
-}
-
-func main() {
-	fmt.Println("")
-	fmt.Println("\033[31m // LightScan // \033[0m")
-	fmt.Println("\033[31m // Scan any TCP port(s) is open !// \033[0m")
-	fmt.Println("")
-
-	scanPort()
 }
